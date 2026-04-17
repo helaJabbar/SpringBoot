@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Architecture Spring Boot</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <section class="lesson">
+
+        <h1>L’architecture d’une application Spring Boot</h1>
+    
+        <h2>Une architecture en couches</h2>
+    
+        <p>
+            Une application Spring Boot peut être organisée de plusieurs façons.
+            Le framework ne impose pas une structure unique, ce qui laisse une grande flexibilité aux développeurs.
+        </p>
+    
+        <p>
+            Cependant, dans les applications web modernes, on utilise très souvent
+            <strong>l’architecture n-tiers</strong>, car elle permet de séparer clairement les responsabilités du code.
+        </p>
+    
+        <p>
+            Cette architecture peut contenir plusieurs couches, mais dans la majorité des cas,
+            on retrouve une structure simple en <strong>3 tiers</strong> :
+        </p>
+    
+        <ul>
+            <li><strong>Couche Présentation</strong> : interface utilisateur (Controller REST)</li>
+            <li><strong>Couche Métier</strong> : logique applicative (Service)</li>
+            <li><strong>Couche Accès aux données</strong> : interaction avec la base (Repository)</li>
+        </ul>
+    
+        <div class="image-container">
+            <img src="./images/architecture.png" alt="Architecture Spring Boot 3 tiers">
+        </div>
+    
+    </section>
+</section>
+</body>
+</html>

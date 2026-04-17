@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <section class="lesson">
+
+        <h1>Installation de Spring Boot</h1>
+    
+        <h2>Qu’est-ce qu’on installe ?</h2>
+    
+        <p>
+            Pour travailler avec <strong>Spring Boot</strong>, il n’est pas nécessaire d’installer un framework complexe.
+            On utilise principalement des outils Java modernes qui simplifient le développement.
+        </p>
+    
+        <p>
+            L’installation consiste à préparer un environnement complet pour créer et exécuter des applications Spring Boot.
+        </p>
+    
+        <h2>1. Prérequis</h2>
+    
+        <p>Avant de commencer, assure-toi d’avoir :</p>
+    
+        <ul>
+            <li><strong>JDK (Java Development Kit)</strong> version 17 ou plus</li>
+            <li><strong>IDE</strong> : IntelliJ IDEA ou Eclipse ou VS Code</li>
+            <li><strong>Maven</strong> (souvent intégré dans Spring Boot)</li>
+            <li>Un navigateur et Postman (pour tester les API)</li>
+        </ul>
+    
+        <h2>2. Création du projet Spring Boot</h2>
+    
+        <p>
+            La méthode la plus simple pour créer un projet Spring Boot est d’utiliser
+            <strong>Spring Initializr</strong>.
+        </p>
+    
+        <p>👉 Site officiel :</p>
+    
+        <p>
+            <a href="https://start.spring.io" target="_blank">https://start.spring.io</a>
+        </p>
+    
+        <h3>Étapes :</h3>
+    
+        <ol>
+            <li>Choisir Maven Project</li>
+            <li>Choisir Java</li>
+            <li>Version Spring Boot (stable recommandée)</li>
+            <li>Ajouter les dépendances :
+                <ul>
+                    <li>Spring Web</li>
+                    <li>Spring Data JPA</li>
+                    <li>Spring Boot DevTools</li>
+                    <li>Driver de base de données (MySQL ou PostgreSQL)</li>
+                </ul>
+            
+                <h2>3. Spring Boot DevTools</h2>
+                </ul>
+            </li>
+            <li>Cliquer sur Generate</li>
+            <li>Ouvrir le projet dans l’IDE</li>
+        </ol>
+    
+        <h2>3. Structure du projet</h2>
+    
+        <p>Une application Spring Boot contient généralement :</p>
+    
+        <ul>
+            <li><strong>src/main/java</strong> : code Java</li>
+            <li><strong>src/main/resources</strong> : configuration</li>
+            <li><strong>application.properties</strong> : configuration principale</li>
+        </ul>
+    
+        <h2>4. Lancer l’application</h2>
+    
+        <p>
+            Pour démarrer le projet, il suffit d’exécuter la classe principale contenant :
+        </p>
+    
+        <pre>
+    @SpringBootApplication
+    public class DemoApplication {
+        public static void main(String[] args) {
+            SpringApplication.run(DemoApplication.class, args);
+        }
+    }
+        </pre>
+    
+        <p>
+            Une fois lancé, l’application est accessible sur :
+            <strong>http://localhost:8080</strong>
+        </p>
+    
+        <h2>Résumé</h2>
+    
+        <p>
+            Spring Boot permet de créer rapidement des applications Java modernes.
+            Grâce à Spring Initializr, l’installation et la création d’un projet sont très simples.
+        </p>
+    
+    </section>
+</body>
+</html>

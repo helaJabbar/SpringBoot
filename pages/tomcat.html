@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tomcat</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<section class="lesson">
+
+    <h1>Serveur Tomcat dans Spring Boot</h1>
+
+    <p>
+        Spring Boot utilise un serveur intégré appelé <strong>Apache Tomcat</strong>.
+        Cela permet d’exécuter l’application sans installer un serveur externe.
+    </p>
+
+    <h2>1. Qu’est-ce que Tomcat ?</h2>
+
+    <p>
+        <strong>Apache Tomcat</strong> est un serveur web Java qui permet d’exécuter des applications web Java.
+        Il gère les requêtes HTTP et exécute les Servlets.
+    </p>
+
+    <p>
+        👉 Dans Spring Boot, Tomcat est <strong>embedded (intégré)</strong>.
+    </p>
+
+    <h2>2. Rôle de Tomcat dans Spring Boot</h2>
+
+    <ul>
+        <li>Recevoir les requêtes HTTP</li>
+        <li>Gérer les connexions clients</li>
+        <li>Exécuter les controllers Spring</li>
+        <li>Retourner les réponses au navigateur ou Postman</li>
+    </ul>
+
+    <h2>3. Tomcat embarqué (Embedded Server)</h2>
+
+    <p>
+        Spring Boot intègre Tomcat automatiquement dans l’application.
+        Cela signifie que tu n’as pas besoin de le configurer manuellement.
+    </p>
+
+    <p><strong>Avantage :</strong></p>
+
+    <ul>
+        <li>Déploiement simple</li>
+        <li>Aucune configuration externe</li>
+        <li>Application autonome (standalone)</li>
+    </ul>
+
+    <h2>4. Port par défaut</h2>
+
+    <p>
+        Par défaut, Tomcat utilise le port :
+    </p>
+
+    <pre>
+8080
+    </pre>
+
+    <p>
+        Exemple d’accès à une application :
+    </p>
+
+    <pre>
+http://localhost:8080
+    </pre>
+
+    <h2>5. Modifier le port Tomcat</h2>
+
+    <p>
+        Si le port 8080 est occupé, tu peux le changer dans :
+        <strong>application.properties</strong>
+    </p>
+
+    <pre>
+server.port=8081
+    </pre>
+
+    <p>
+        L’application sera alors accessible sur :
+    </p>
+
+    <pre>
+http://localhost:8081
+    </pre>
+
+    <h2>6. Schéma simple du fonctionnement</h2>
+
+    <pre>
+Client (Browser / Postman)
+        ↓
+   Tomcat Server
+        ↓
+   Spring Controller
+        ↓
+   Service
+        ↓
+   Repository
+        ↓
+   Database
+    </pre>
+
+    <h2>7. Résumé</h2>
+
+    <p>
+        Tomcat est le serveur intégré de Spring Boot qui permet de gérer les requêtes HTTP
+        et d’exécuter l’application sans configuration externe.
+    </p>
+
+</section>
+
+</body>
+</html>

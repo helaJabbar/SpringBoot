@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <section class="lesson">
+      <section class="lesson">
+        <h1>JPA et Spring Data Repository</h1>
+
+        <h2>Rappel : Qu’est-ce que JPA ?</h2>
+
+        <p>
+          <strong>JPA (Java Persistence API)</strong> permet de manipuler une
+          base de données en utilisant des objets Java. Chaque entité correspond
+          à une table, et chaque objet correspond à une ligne.
+        </p>
+
+        <h2>1. Le Repository Spring Data JPA</h2>
+
+        <p>
+          Spring Data JPA simplifie l’accès aux données en fournissant
+          automatiquement des méthodes prêtes à l’emploi. Il suffit d’étendre
+          <strong>JpaRepository</strong>.
+        </p>
+
+        <pre>
+        public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+        }
+            </pre
+        >
+
+        <p>
+          👉 Sans écrire de SQL, Spring génère automatiquement les requêtes.
+        </p>
+
+        <h2>2. Les méthodes CRUD de base</h2>
+
+        <p>Voici les méthodes principales déjà fournies par Spring :</p>
+
+        <ul>
+          <li>
+            <strong>save(entity)</strong> → ajouter ou modifier une entité
+          </li>
+          <li>
+            <strong>findAll()</strong> → récupérer tous les enregistrements
+          </li>
+          <li><strong>findById(id)</strong> → chercher par ID</li>
+          <li><strong>deleteById(id)</strong> → supprimer par ID</li>
+          <li><strong>delete(entity)</strong> → supprimer un objet</li>
+        </ul>
+
+        <h3>Exemple :</h3>
+
+        <pre>
+        userRepository.save(user);
+        
+        List&lt;User&gt; users = userRepository.findAll();
+        
+        Optional&lt;User&gt; u = userRepository.findById(1L);
+        
+        userRepository.deleteById(1L);
+            </pre
+        >
+
+        <h2>3. Les requêtes automatiques (Query Methods)</h2>
+
+        <p>
+          Spring Data permet de créer des requêtes automatiquement en utilisant
+          le nom de la méthode.
+        </p>
+
+        <h2>Règles des Query Methods</h2>
+
+        <p>
+          Les méthodes comme <strong>findByName</strong>,
+          <strong>findByEmail</strong> ou <strong>findByAge</strong>
+          doivent respecter une règle de nommage précise.
+        </p>
+
+        <p>
+          Spring Data JPA analyse le nom de la méthode pour générer
+          automatiquement la requête SQL correspondante.
+        </p>
+
+        <h3>Structure générale :</h3>
+
+        <pre>
+findBy + NomDuChamp + (Condition optionnelle)
+</pre
+        >
+
+        <h3>Exemples valides :</h3>
+
+        <ul>
+          <li><strong>findByName(String name)</strong> → recherche par nom</li>
+          <li>
+            <strong>findByEmail(String email)</strong> → recherche par email
+          </li>
+          <li><strong>findByAge(int age)</strong> → recherche par âge</li>
+        </ul>
+
+       
+        <pre>
+        public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+        
+            User findByEmail(String email);
+        
+            List&lt;User&gt; findByName(String name);
+        }
+            </pre
+        >
+
+        <h2>4. Les requêtes avec conditions (Between, Like, etc.)</h2>
+
+        <p>
+          Spring Data JPA supporte des requêtes avancées basées sur le nom des
+          méthodes.
+        </p>
+
+        <h3>Exemples :</h3>
+
+        <ul>
+          <li><strong>findByAgeBetween(int min, int max)</strong></li>
+          <li><strong>findByNameContaining(String text)</strong></li>
+          <li><strong>findByEmailLike(String pattern)</strong></li>
+        </ul>
+
+        <pre>
+        public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+        
+            List&lt;User&gt; findByAgeBetween(int min, int max);
+        
+            List&lt;User&gt; findByNameContaining(String text);
+        
+            List&lt;User&gt; findByEmailLike(String pattern);
+        }
+            </pre
+        >
+
+        <h2>5. Exemple concret complet</h2>
+
+        <pre>
+        @GetMapping("/users")
+        public List&lt;User&gt; getAllUsers() {
+            return userRepository.findAll();
+        }
+        
+        @GetMapping("/users/{id}")
+        public User getUser(@PathVariable Long id) {
+            return userRepository.findById(id).orElse(null);
+        }
+        
+        @GetMapping("/users/search")
+        public List&lt;User&gt; search(@RequestParam String name) {
+            return userRepository.findByNameContaining(name);
+        }
+        
+        @PostMapping("/users")
+        public User addUser(@RequestBody User user) {
+            return userRepository.save(user);
+        }
+            </pre
+        >
+
+        <h2>6. Résumé</h2>
+
+        <p>
+          Spring Data JPA permet de manipuler une base de données sans écrire de
+          SQL. Grâce aux méthodes comme
+          <strong>save, findById, findBy, findBetween</strong>, le développement
+          devient rapide et propre.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>

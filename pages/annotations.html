@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<section class="lesson">
+
+    <h1>Les Annotations Spring Boot</h1>
+
+    <p>
+        Les annotations permettent à Spring Boot de comprendre le rôle de chaque classe et de générer automatiquement
+        la configuration de l’application.
+    </p>
+
+    <h2>1. Annotations de la couche Model (Entity + JPA)</h2>
+
+    <p>
+        Ces annotations servent à définir les tables et les colonnes en base de données.
+    </p>
+
+    <h3>📦 Annotations principales</h3>
+
+    <ul>
+        <li><strong>@Entity</strong> → définit une entité (table)</li>
+        <li><strong>@Table(name = "...")</strong> → nom de la table</li>
+        <li><strong>@Id</strong> → clé primaire</li>
+        <li><strong>@GeneratedValue</strong> → génération automatique de l’ID</li>
+    </ul>
+
+    <h3>📌 Annotations des champs (colonnes)</h3>
+
+    <ul>
+        <li><strong>@Column(name="...", nullable=false)</strong> → définit une colonne</li>
+        <li><strong>nullable = false</strong> → champ obligatoire</li>
+        <li><strong>unique = true</strong> → valeur unique</li>
+        <li><strong>length = 50</strong> → taille maximale</li>
+    </ul>
+
+    <pre>
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
+
+    @Column(name = "email", unique = true)
+    private String email;
+}
+    </pre>
+
+    <h2>2. Annotations Lombok (simplification du code)</h2>
+
+    <p>
+        Lombok permet de réduire le code répétitif (getters, setters, constructeurs…).
+    </p>
+
+    <h3>📌 Annotations Lombok principales</h3>
+
+    <ul>
+        <li><strong>@Getter</strong> → génère les getters</li>
+        <li><strong>@Setter</strong> → génère les setters</li>
+        <li><strong>@NoArgsConstructor</strong> → constructeur vide</li>
+        <li><strong>@AllArgsConstructor</strong> → constructeur avec tous les champs</li>
+        <li><strong>@Data</strong> → combine getters + setters + toString + equals</li>
+    </ul>
+
+    <pre>
+import lombok.*;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+}
+    </pre>
+
+    <h2>3. Annotations Repository</h2>
+
+    <ul>
+        <li><strong>@Repository</strong> → accès à la base de données</li>
+    </ul>
+
+    <pre>
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+    </pre>
+
+    <h2>4. Annotations Service</h2>
+
+    <ul>
+        <li><strong>@Service</strong> → logique métier</li>
+        <li><strong>@Autowired</strong> → injection de dépendance</li>
+    </ul>
+
+    <pre>
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository repository;
+}
+    </pre>
+
+    <h2>5. Annotations Controller (REST API)</h2>
+
+    <ul>
+        <li><strong>@RestController</strong> → API REST</li>
+        <li><strong>@RequestMapping</strong> → chemin principal</li>
+        <li><strong>@GetMapping</strong> → GET</li>
+        <li><strong>@PostMapping</strong> → POST</li>
+        <li><strong>@PutMapping</strong> → PUT</li>
+        <li><strong>@DeleteMapping</strong> → DELETE</li>
+        <li><strong>@PathVariable</strong> → variable URL</li>
+        <li><strong>@RequestParam</strong> → paramètre URL</li>
+        <li><strong>@RequestBody</strong> → JSON</li>
+    </ul>
+
+    <h2>6. Annotations générales importantes</h2>
+
+    <ul>
+        <li><strong>@SpringBootApplication</strong> → point de départ</li>
+        <li><strong>@Component</strong> → classe gérée par Spring</li>
+    </ul>
+
+    <h2>7. Résumé</h2>
+
+    <p>
+        Les annotations permettent de structurer une application Spring Boot et de générer automatiquement
+        la configuration de la base de données et de l’API REST.
+    </p>
+
+</section>
+    
+</body>
+</html>

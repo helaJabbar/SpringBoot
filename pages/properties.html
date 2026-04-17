@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <section class="lesson">
+      <h1>Configuration d’une application Spring Boot</h1>
+
+      <h2>Structure d’un projet Spring Boot</h2>
+
+      <p>
+        Une application Spring Boot est organisée en plusieurs couches afin de
+        séparer les responsabilités.
+      </p>
+
+      <p>On retrouve généralement 4 packages principaux :</p>
+
+      <ul>
+        <li><strong>model</strong></li>
+        <li><strong>repository</strong></li>
+        <li><strong>service</strong></li>
+        <li><strong>controller</strong></li>
+      </ul>
+
+      <h2>Rôle de chaque couche</h2>
+
+      <!-- ACCORDÉON START -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">📦 Model (Entity)</div>
+          <div class="accordion-content">
+            <p>
+              Contient les classes qui représentent les tables de la base de
+              données. Chaque objet correspond à une ligne dans une table.
+            </p>
+            <p>
+              Le <strong>Model</strong> représente la structure des données de
+              l’application. Il est directement lié à la base de données.
+            </p>
+
+            <p>
+              Chaque classe Model correspond à une <strong>table</strong> et
+              chaque objet correspond à une <strong>ligne</strong>.
+            </p>
+
+            <p><strong>Rôle dans l’architecture :</strong></p>
+            <ul>
+              <li>Représenter les données métier</li>
+              <li>Stocker les informations de l’application</li>
+              <li>Être persisté en base de données</li>
+            </ul>
+
+            <p><strong>👉 Couche : Persistence / Data Layer</strong></p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">🗄 Repository</div>
+          <div class="accordion-content">
+            <p>
+              Permet d’accéder à la base de données. Il fournit les méthodes
+              CRUD (save, findAll, findById, delete…).
+            </p>
+            <p>
+              Le <strong>Repository</strong> est responsable de la communication
+              avec la base de données.
+            </p>
+
+            <p>
+              Il permet d’exécuter des opérations CRUD sans écrire de SQL grâce
+              à Spring Data JPA.
+            </p>
+
+            <p><strong>Rôle dans l’architecture :</strong></p>
+            <ul>
+              <li>Accéder aux données</li>
+              <li>Interagir avec la base de données</li>
+              <li>Fournir des méthodes comme save(), findAll(), delete()</li>
+            </ul>
+
+            <p><strong>👉 Couche : Data Access Layer (DAL)</strong></p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">⚙ Service</div>
+          <div class="accordion-content">
+            <p>
+              Contient la logique métier de l’application. Il fait le lien entre
+              Controller et Repository.
+            </p>
+            <p>
+              Le <strong>Service</strong> contient la logique métier de
+              l’application.
+            </p>
+
+            <p>
+              C’est ici que les règles de gestion sont appliquées avant
+              d’envoyer ou de récupérer les données.
+            </p>
+
+            <p><strong>Rôle dans l’architecture :</strong></p>
+            <ul>
+              <li>Appliquer les règles métier</li>
+              <li>Traiter les données</li>
+              <li>Faire le lien entre Controller et Repository</li>
+            </ul>
+
+            <p><strong>👉 Couche : Business Layer</strong></p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">🌐 Controller</div>
+          <div class="accordion-content">
+            <p>
+              Gère les requêtes HTTP (API REST). Il reçoit les appels du client
+              et retourne les réponses.
+            </p>
+            <p>
+              Le <strong>Controller</strong> est le point d’entrée de
+              l’application. Il reçoit les requêtes HTTP (GET, POST, PUT,
+              DELETE).
+            </p>
+
+            <p>
+              Il ne contient pas de logique métier, il délègue tout au Service.
+            </p>
+
+            <p><strong>Rôle dans l’architecture :</strong></p>
+            <ul>
+              <li>Recevoir les requêtes HTTP</li>
+              <li>Envoyer les réponses au client</li>
+              <li>Appeler la couche Service</li>
+            </ul>
+
+            <p><strong>👉 Couche : Presentation Layer / API Layer</strong></p>
+          </div>
+        </div>
+      </div>
+      <!-- ACCORDÉON END -->
+
+      <h2>Arborescence du projet</h2>
+
+      <pre>
+com.example.demo
+│
+├── controller
+├── service
+├── repository
+└── model
+    </pre
+      >
+
+      <h2>Configuration application.properties (PostgreSQL)</h2>
+
+      <pre>
+spring.datasource.url=jdbc:postgresql://localhost:5432/ma_base
+spring.datasource.username=postgres
+spring.datasource.password=1234
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+    </pre
+      >
+
+     
+
+      <h2>Résumé</h2>
+
+      <p>
+        Une bonne organisation en couches (Model, Repository, Service,
+        Controller) permet de structurer proprement une application Spring Boot.
+      </p>
+    </section>
+
+    <script src="../js/app.js"></script>
+  </body>
+</html>

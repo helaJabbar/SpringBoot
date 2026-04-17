@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Rest</title>
+</head>
+<body>
+    <section class="lesson">
+
+        <h1>API REST avec Spring Boot</h1>
+    
+        <p>
+            Une API REST permet à une application de communiquer avec d’autres systèmes (frontend, mobile, Postman…)
+            en utilisant le protocole HTTP.
+        </p>
+    
+        <p>
+            Spring Boot facilite la création d’API REST grâce à des annotations simples et une architecture en couches.
+        </p>
+    
+        <h2>1. Qu’est-ce qu’une API REST ?</h2>
+    
+        <p>
+            REST (Representational State Transfer) est un style d’architecture utilisé pour créer des services web.
+            Les données sont échangées principalement en format <strong>JSON</strong>.
+        </p>
+    
+        <p>
+            👉 Une API REST permet de manipuler des ressources (ex: utilisateurs, produits, étudiants…).
+        </p>
+    
+        <h2>2. Les méthodes HTTP utilisées</h2>
+    
+        <ul>
+            <li><strong>GET</strong> → récupérer des données</li>
+            <li><strong>POST</strong> → ajouter une nouvelle donnée</li>
+            <li><strong>PUT</strong> → modifier une donnée complète</li>
+            <li><strong>PATCH</strong> → modifier une donnée partiellement</li>
+            <li><strong>DELETE</strong> → supprimer une donnée</li>
+        </ul>
+    
+        <h2>3. Architecture d’une API REST</h2>
+    
+        <pre>
+    Client (Browser / Postman / Frontend)
+            ↓
+    Controller (REST API)
+            ↓
+    Service (logique métier)
+            ↓
+    Repository (accès base de données)
+            ↓
+    Database
+        </pre>
+    
+        <h2>4. Création d’un Controller REST</h2>
+    
+        <p>
+            En Spring Boot, une API REST est créée avec la classe Controller.
+        </p>
+    
+        <pre>
+    @RestController
+    @RequestMapping("/api/users")
+    public class UserController {
+    
+        @Autowired
+        private UserService service;
+    
+        @GetMapping
+        public List<User> getAllUsers() {
+            return service.findAll();
+        }
+    
+        @GetMapping("/{id}")
+        public User getUserById(@PathVariable Long id) {
+            return service.findById(id);
+        }
+       
+            @GetMapping("/search")
+            public List<User> searchByName(@RequestParam String name) {
+                return service.findByName(name);
+            }
+            
+        @PostMapping
+        public User addUser(@RequestBody User user) {
+            return service.save(user);
+        }
+    
+        @DeleteMapping("/{id}")
+        public void deleteUser(@PathVariable Long id) {
+            service.delete(id);
+        }
+    }
+        </pre>
+    
+        <h2>5. Explication des annotations</h2>
+    
+        <ul>
+            <li><strong>@RestController</strong> → définit une API REST</li>
+            <li><strong>@RequestMapping</strong> → définit le chemin principal</li>
+            <li><strong>@GetMapping</strong> → récupération des données</li>
+            <li><strong>@PostMapping</strong> → ajout de données</li>
+            <li><strong>@DeleteMapping</strong> → suppression</li>
+            <li><strong>@PathVariable</strong> → récupération d’un paramètre dans l’URL</li>
+            <li><strong>@RequestBody</strong> → réception des données JSON</li>
+            <li><strong>@RequestParam</strong> → permet de récupérer des données envoyées dans l’URL sous forme de paramètres.</li>
+            <li><strong>@Autowired</strong> → injection du service</li>
+        </ul>
+    
+        <h2>6. Exemple JSON envoyé (POST)</h2>
+    
+        <pre>
+    {
+        "name": "Ali",
+        "email": "ali@gmail.com",
+        "age": 22
+    }
+        </pre>
+    
+        <h2>7. Test avec Postman</h2>
+    
+        <p>
+            Postman est un outil qui permet de tester les API REST sans interface graphique.
+        </p>
+    
+        <ul>
+            <li>GET → http://localhost:8080/api/users</li>
+            <li>GET by ID → http://localhost:8080/api/users/1</li>
+            <li>POST → envoi JSON</li>
+            <li>DELETE → suppression par ID</li>
+        </ul>
+    
+        <h2>8. Résumé</h2>
+    
+        <p>
+            Une API REST permet de créer une communication entre un client et un serveur.
+            Spring Boot simplifie cela grâce aux annotations et à l’architecture en couches.
+        </p>
+    
+    </section>
+    
+</body>
+</html>

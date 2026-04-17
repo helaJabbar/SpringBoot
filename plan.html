@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+<section id="plan-global">
+
+    <h2>🧭 Plan global du webinar – Spring Boot REST API</h2>
+    
+    <p>
+    👉 Objectif : construire une application complète de gestion (Users + Tasks)
+    avec Spring Boot, JPA et PostgreSQL.
+    </p>
+    
+    <hr>
+    
+    <h3>🟢 PARTIE 1 — Mise en place ⏱️ 20–30 min</h3>
+    
+    <p><b>✔ Objectif :</b> Créer le projet et connecter la base de données</p>
+    
+    <ul>
+    <li>Création du projet Spring Boot (Spring Initializr)</li>
+    <li>Ajout des dépendances :</li>
+    <ul>
+        <li>Spring Web</li>
+        <li>Spring Data JPA</li>
+        <li>PostgreSQL Driver</li>
+        <li>Lombok</li>
+    </ul>
+    <li>Configuration du fichier <b>application.properties</b></li>
+    </ul>
+    
+    <hr>
+    
+    <h3>🟢 PARTIE 2 — Modélisation ⏱️ 30 min</h3>
+    
+    <p><b>✔ Objectif :</b> Créer la structure des données (tables)</p>
+    
+    <ul>
+    <li>User Entity</li>
+    <li>Task Entity</li>
+    <li>Enum Status (ex: TODO, IN_PROGRESS, DONE)</li>
+    </ul>
+    
+    <hr>
+    
+    <h3>🟢 PARTIE 3 — Repository Layer ⏱️ 10–15 min</h3>
+    
+    <p><b>✔ Objectif :</b> Comprendre Spring Data JPA</p>
+    
+    <ul>
+    <li>TaskRepository</li>
+    <li>UserRepository</li>
+    <li>CRUD automatique (findAll, save, delete...)</li>
+    </ul>
+    
+    <hr>
+    
+    <h3>🟢 PARTIE 4 — Service Layer (cœur métier) ⏱️ 30–40 min</h3>
+    
+    <p><b>✔ Objectif :</b> Implémenter la logique métier</p>
+    
+    <ul>
+    <li>TaskService</li>
+    <li>UserService</li>
+    <li>Gestion des règles métier</li>
+    <li>Appels aux repositories</li>
+    </ul>
+    
+    <hr>
+    
+    <h3>🟢 PARTIE 5 — REST API (Controller) ⏱️ 30–40 min</h3>
+    
+    <p><b>✔ Objectif :</b> Exposer les endpoints REST</p>
+    
+    <ul>
+    <li>GET all</li>
+    <li>GET by id</li>
+    <li>POST create</li>
+    <li>PUT update</li>
+    <li>DELETE</li>
+    <li>Filtres : status, user, date</li>
+    </ul>
+    
+    <p>💡 <b>Moment clé du webinar :</b></p>
+    <p>👉 Tester chaque endpoint en direct avec Postman</p>
+    
+    <hr>
+    
+    <h3>🟢 PARTIE 6 — Tests avec Postman ⏱️ 20 min</h3>
+    
+    <p><b>✔ Objectif :</b> Valider toute l’application</p>
+    
+    <ul>
+    <li>Création utilisateur</li>
+    <li>Création tâche</li>
+    <li>Filtrage par status</li>
+    <li>Update status</li>
+    </ul>
+    
+    <hr>
+    
+    <h3>🎯 Résultat final</h3>
+    
+    <p>
+    ✔ Une API REST complète<br>
+    ✔ Une architecture propre en couches<br>
+    ✔ Une base solide pour Spring Boot
+    </p>
+    
+    </section>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maven</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <section class="lesson">
+
+      <h1>Maven et le fichier pom.xml</h1>
+  
+      <h2>Qu’est-ce que Maven ?</h2>
+  
+      <p>
+          <strong>Maven</strong> est un outil de gestion de projet Java.
+          Il permet d’automatiser :
+      </p>
+  
+      <ul>
+          <li>la gestion des dépendances (libraries)</li>
+          <li>la compilation du projet</li>
+          <li>les tests</li>
+          <li>le packaging (JAR / WAR)</li>
+      </ul>
+  
+      <p>
+          Dans une application Spring Boot, Maven joue un rôle essentiel
+          car il télécharge automatiquement toutes les bibliothèques nécessaires.
+      </p>
+  
+      <h2>Le fichier pom.xml</h2>
+  
+      <p>
+          Le fichier <strong>pom.xml</strong> (Project Object Model) est le cœur d’un projet Maven.
+          Il contient toutes les informations du projet.
+      </p>
+  
+      <p>On y trouve principalement :</p>
+  
+      <ul>
+          <li>Les dépendances Spring Boot</li>
+          <li>La version de Java</li>
+          <li>Les plugins de compilation</li>
+      </ul>
+  
+      <h2>Exemple de pom.xml Spring Boot</h2>
+  
+      <p>Voici un exemple simple d’un fichier pom.xml :</p>
+  
+      <pre>
+  &lt;project xmlns="http://maven.apache.org/POM/4.0.0"&gt;
+  
+      &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  
+      &lt;groupId&gt;com.example&lt;/groupId&gt;
+      &lt;artifactId&gt;demo&lt;/artifactId&gt;
+      &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+  
+      &lt;parent&gt;
+          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+          &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+          &lt;version&gt;3.3.0&lt;/version&gt;
+      &lt;/parent&gt;
+  
+      &lt;dependencies&gt;
+  
+          &lt;!-- Spring Web --&gt;
+          &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+          &lt;/dependency&gt;
+  
+          &lt;!-- Spring Data JPA --&gt;
+          &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+          &lt;/dependency&gt;
+  
+      &lt;/dependencies&gt;
+  
+  &lt;/project&gt;
+      </pre>
+  
+      <h2>Résumé</h2>
+  
+      <p>
+          Maven simplifie énormément la gestion des projets Java.
+          Le fichier pom.xml est indispensable pour définir les dépendances et la structure du projet Spring Boot.
+      </p>
+  
+  </section>
+  </body>
+</html>
